@@ -13,3 +13,7 @@ export interface IFormData {
     to: string;
     value: string;
 }
+
+export interface IRootstate {
+    cashFlowreducer: IShakeyProps
+}

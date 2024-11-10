@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import Chart from "react-google-charts";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 import SankeyEditor from "../Editor";
-import { IShakeyProps } from "../../../Common/types";
 
 import "./index.css";
+import { IRootstate, IShakeyProps } from "../../../Common/types";
 
-const Content = ({ data: sankeyData, options }: IShakeyProps) => {
-    const [data, setData] = useState<IShakeyProps["data"]>(sankeyData);
-    const { t } = useTranslation()
+const Content = () => {
+    const { t } = useTranslation();
+
+    const cashflowData = useSelector<IRootstate, IShakeyProps>(state => state.cashFlowreducer)
+
+    const {data, options} = cashflowData;
 
     return (
         <div className="cashFlowContainer">
             <div>
-                <Chart
+                {data.length>1 && <Chart
                     width={'700px'}
                     height={'400px'}
                     chartType="Sankey"
@@ -22,11 +26,11 @@ const Content = ({ data: sankeyData, options }: IShakeyProps) => {
                     data={data}
                     options={options}
                     rootProps={{ 'aria-label': 'A Sankey diagram showing cash flow' }}
-                />
+                />}
             </div>
             <div>
                 <h2>{t("cashFlow")}</h2>
-                <SankeyEditor data={data} setData={setData} />
+                <SankeyEditor />
             </div>
         </div>
     )

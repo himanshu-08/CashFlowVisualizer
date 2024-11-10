@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
-import './index.css';
 import { IFormData } from '../../../Common/types';
+import './index.css';
 
 const AddNodePopup = ( { selectedValue, onSubmit }: {selectedValue: string, onSubmit: (a:IFormData) => void} ) => {
   const [formData, setFormData] = useState({
@@ -25,7 +25,6 @@ const AddNodePopup = ( { selectedValue, onSubmit }: {selectedValue: string, onSu
     event.preventDefault();
 
     // Handle form submission here, e.g., send data to a server
-    console.log(formData);
     onSubmit(formData)
   };
 
