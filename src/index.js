@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './App';
-import './Utilities/i18next'
+import './Common/i18next'
 
 import './index.css';
 

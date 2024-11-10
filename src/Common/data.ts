@@ -1,9 +1,4 @@
 
-export interface IShakeyProps {
-    data: (string | number)[][],
-    options: any
-  }
-  
   export const data = [
     ["From", "To", "Weight"],
     ['Salary', 'Bills', 3000],

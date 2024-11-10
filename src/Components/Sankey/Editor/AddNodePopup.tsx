@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
-import './index.css'
+import './index.css';
+import { IFormData } from '../../../Common/types';
 
-interface IFormData {
-  from: string;
-  to: string;
-  value: string;
-}
-
-const AddForm = ( { selectedValue, onSubmit }: {selectedValue: string, onSubmit: (a:IFormData) => void} ) => {
+const AddNodePopup = ( { selectedValue, onSubmit }: {selectedValue: string, onSubmit: (a:IFormData) => void} ) => {
   const [formData, setFormData] = useState({
     from: '',
     to: '',
@@ -19,14 +14,14 @@ const AddForm = ( { selectedValue, onSubmit }: {selectedValue: string, onSubmit:
     setFormData(prevState => ({...prevState, from: selectedValue}))
   },[selectedValue])
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     // Handle form submission here, e.g., send data to a server
@@ -77,4 +72,4 @@ const AddForm = ( { selectedValue, onSubmit }: {selectedValue: string, onSubmit:
   );
 }
 
-export default AddForm;
+export default AddNodePopup;

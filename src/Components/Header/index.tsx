@@ -1,8 +1,8 @@
 import React from 'react';
-import "./index.css"
 import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 
+import "./index.css";
 
 function Header() {
   const { t } = useTranslation()
